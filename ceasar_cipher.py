@@ -8,35 +8,34 @@ newdemessage = ''
 print('')
 
 for letter in message:
-  if letter == ' ':
-    newletter = ' '
-  else: 
-    #print(letter)
-    count = 0
-    for item in lalphabet:
-      if item == letter or item.upper() == letter:
-        if count > 18:
-          newcount = count + key - 26
-          newletter = lalphabet[newcount]
-        else:
-          newletter = lalphabet[count + key]
-      count = count + 1
+  count = 0
+  for item in lalphabet:
+    if item == letter or item.upper() == letter:
+      if count > 18:
+        newcount = count + key - 26
+        newletter = lalphabet[newcount]
+      else:
+        newletter = lalphabet[count + key]
+      break
+    count = count + 1
+  else:
+    newletter = letter
   newmessage = newmessage + newletter
 
 for letter in message:
-  if letter == ' ':
-    newletter = ' '
+  count = 0
+  for item in lalphabet:
+    if item == letter or item.upper() == letter:
+      if count < 6:
+        newcount = count - key + 26
+        newletter = lalphabet[newcount]
+      else:
+        #print(count)
+        newletter = lalphabet[count - key]
+      break
+    count = count + 1
   else:
-    count = 0
-    for item in lalphabet:
-      if item == letter or item.upper() == letter:
-        if count < 6:
-          newcount = count - key + 26
-          newletter = lalphabet[newcount]
-        else:
-          #print(count)
-          newletter = lalphabet[count - key]
-      count = count + 1
+    newletter = letter
   newdemessage = newdemessage + newletter
 
 print('your encrypted message is:')
